@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d %-5p [%t] [%c] %m%n</pattern>
+    </encoder>
+  </appender>
+
+<!--   <logger name="org.kie" level="trace" /> -->
+<!--   <logger name="org.drools.core.reteoo.SegmentMemory" level="trace" /> -->
+<!--   <logger name="org.drools.core.reteoo.PathMemory" level="trace" /> -->
+
+<logger name="org.drools" level="info" /> 
+
+<!--   <logger name="org.drools.core.common.DefaultAgenda" level="debug" /> -->
+<!--   <logger name="org.drools.core.reteoo.EntryPointNode" level="debug" /> -->
+
+  <root level="info"><!-- TODO We probably want to set default level to warn 
+      instead -->
+    <appender-ref ref="consoleAppender" />
+  </root>
+
+</configuration>

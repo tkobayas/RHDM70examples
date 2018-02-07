@@ -1,0 +1,1105 @@
+package com.github.tkobayas.phreak.unlinking
+
+import com.github.tkobayas.phreak.unlinking.model.*;
+
+rule "Rule0"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule1"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule2"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule3"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule4"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule5"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule6"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule7"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule8"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule9"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule10"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule11"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule12"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule13"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule14"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule15"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule16"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule17"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule18"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule19"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule20"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule21"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule22"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule23"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule24"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule25"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule26"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule27"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule28"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule29"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule30"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule31"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule32"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule33"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule34"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule35"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule36"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule37"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule38"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule39"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule40"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule41"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule42"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule43"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule44"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule45"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule46"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule47"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule48"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule49"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule50"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule51"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule52"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule53"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule54"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule55"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule56"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule57"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule58"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule59"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule60"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule61"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule62"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule63"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule64"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule65"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule66"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule67"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule68"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule69"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule70"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule71"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule72"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule73"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule74"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule75"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule76"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule77"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule78"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule79"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule80"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule81"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule82"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule83"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule84"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule85"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule86"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule87"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule88"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule89"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+rule "Rule90"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value1), count( $a0 ))
+then
+end
+
+rule "Rule91"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge2", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value2), count( $a0 ))
+then
+end
+
+rule "Rule92"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge3", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value3), count( $a0 ))
+then
+end
+
+rule "Rule93"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge4", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value4), count( $a0 ))
+then
+end
+
+rule "Rule94"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge5", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value5), count( $a0 ))
+then
+end
+
+rule "Rule95"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge6", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value6), count( $a0 ))
+then
+end
+
+rule "Rule96"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge7", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value7), count( $a0 ))
+then
+end
+
+rule "Rule97"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge8", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value8), count( $a0 ))
+then
+end
+
+rule "Rule98"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge9", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value9), count( $a0 ))
+then
+end
+
+rule "Rule99"
+when
+    $f1 : MyFact1()
+    $f2 : MyFact2(id == $f1.id, value1 == "hoge1", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f3 : MyFact3(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+    $f4 : MyFact4(id == $f1.id, value1 == "hoge10", value2 == $f1.value2, value3 == $f1.value3, value4 == $f1.value4, value5 == $f1.value5)
+
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact5(id == $f1.id, value1 == $f4.value10), count( $a0 ))
+then
+end
+
+

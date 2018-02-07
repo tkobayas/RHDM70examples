@@ -1,0 +1,11 @@
+package com.github.tkobayas.phreak.unlinking
+
+import com.github.tkobayas.phreak.unlinking.model.*;
+
+rule "Rule1"
+when
+    $f1 : MyFact1(value1 == "hoge1")
+    $f2 : MyFact2(value1 == "hoge1", value2 == $f1.value2)
+    $var0 : Long(this != 0) from accumulate($a0 : MyFact3(value2 == $f2.value2), count( $a0 ))
+then 
+end
