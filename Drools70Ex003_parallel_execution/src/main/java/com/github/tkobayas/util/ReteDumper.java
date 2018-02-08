@@ -13,7 +13,7 @@
  * limitations under the License.
 */
 
-package com.github.tkobayas.phreak.unlinking.util;
+package com.github.tkobayas.util;
 
 import java.util.Collection;
 import java.util.HashSet;
