@@ -1,0 +1,20 @@
+package com.sample
+ 
+import com.sample.Message;
+ 
+rule "Hello Group1"
+	ruleflow-group "group1"
+    when
+        m : Message()
+    then
+        System.out.println( "Hello Group1 : " + m.getMessage() );
+        throw new RuntimeException("ahhh");
+end
+
+rule "Hello Group2"
+	ruleflow-group "group2"
+    when
+        m : Message()
+    then
+        System.out.println( "Hello Group2 : " + m.getMessage() );
+end
