@@ -1,6 +1,5 @@
 package com.sample;
 
-import org.jbpm.process.instance.event.listeners.TriggerRulesEventListener;
 import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -15,7 +14,8 @@ public class RHSExceptionTest {
 			KieContainer kContainer = ks.getKieClasspathContainer();
 			KieSession ksession = kContainer.newKieSession();
 
-			ksession.addEventListener(new TriggerRulesEventListener(ksession));
+			//ksession.addEventListener(new MyRulesEventListener());
+
 
 			Message message = new Message();
 			message.setMessage("Hello Rule Flow");
@@ -34,7 +34,7 @@ public class RHSExceptionTest {
 			System.out.println("       getCause() = " + e.getCause().getClass());
 			System.out.println();
 
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 }
