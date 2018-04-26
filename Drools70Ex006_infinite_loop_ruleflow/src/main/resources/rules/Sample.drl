@@ -1,0 +1,13 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+ 
+rule "Hello World"
+	ruleflow-group "group1"
+    when
+        m : Message( )
+    then
+        System.out.println( m );
+        m.setCount(m.getCount() + 1);
+        update( m );
+end

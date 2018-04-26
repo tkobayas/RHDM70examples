@@ -1,0 +1,12 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+ 
+rule "Hello World"
+    when
+        m : Message( )
+    then
+        System.out.println( m );
+        m.setCount(m.getCount() + 1);
+        update( m );
+end
