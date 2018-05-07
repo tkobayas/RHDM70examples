@@ -9,11 +9,6 @@ rule "raise salary"
     then
         System.out.println("raise salary for " + $p.getName());
         int newSalary = $p.getSalary() + 500;
-        
-        //$p.setSalary(newSalary);
-        //update($p);
-        
-        // modify is recommended (but update also works in this example)
         modify($p) {setSalary(newSalary)}
 end
 

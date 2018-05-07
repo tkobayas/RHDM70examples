@@ -26,7 +26,8 @@ rule "R3"
     then
         System.out.println("R3");
         int newValue = $fact.getB() + 10;
-        modify ($fact) {setB(newValue)} 
+        $fact.setB(newValue);
+        update($fact);
 end
 
 rule "R4"
