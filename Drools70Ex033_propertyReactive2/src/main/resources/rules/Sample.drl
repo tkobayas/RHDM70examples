@@ -30,7 +30,7 @@ rule "R3"
         modify ($fact) {setB(newValue)} // "R2" is not fired because of property reactive
         
         //$fact.setB(newValue);
-        //update($fact)
+        //update($fact)                 // update() doesn't work for property reactive
 end
 
 rule "R4"
