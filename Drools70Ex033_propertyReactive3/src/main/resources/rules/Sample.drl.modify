@@ -1,0 +1,17 @@
+package com.sample
+ 
+import com.sample.Person;
+ 
+rule "Every person named Mario is a male"
+when
+    $person : Person( firstName == "Mario" )
+then
+    modify ( $person )  { setMale( true ) }
+end
+
+rule "male"
+    when
+        $person : Person( male == true )
+    then
+        System.out.println("male!");
+end
