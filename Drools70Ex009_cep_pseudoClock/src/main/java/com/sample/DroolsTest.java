@@ -25,9 +25,9 @@ public class DroolsTest {
         	KieSession kSession = kContainer.newKieSession("ksession1");
         	PseudoClockScheduler clock = (PseudoClockScheduler) kSession.<SessionClock>getSessionClock();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss.SSS");
             
-            clock.setStartupTime(sdf.parse("2016/05/30 10:00:00.000").getTime());
+            clock.setStartupTime(sdf.parse("30-05-2016 10:00:00.000").getTime());
             
             Message message1 = new Message(1, "AAA");
             kSession.insert(message1);

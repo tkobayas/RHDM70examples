@@ -20,13 +20,13 @@ public class DroolsTest {
             
         	KieSession kSession = kContainer.newKieSession("ksession1");
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss.SSS");
             
-            Message message1 = new Message(1, sdf.parse("2016/05/30 10:00:00.000"), "AAA");
-            Message message2 = new Message(2, sdf.parse("2017/06/30 10:00:00.000"), "BBB");
-            Message message3 = new Message(3, sdf.parse("2017/07/30 10:00:00.000"), "CCC");
-            Message message4 = new Message(4, sdf.parse("2017/11/30 10:00:00.000"), "DDD");
-            Message message5 = new Message(5, sdf.parse("2018/05/30 10:00:00.000"), "EEE");
+            Message message1 = new Message(1, sdf.parse("01-01-2016 10:00:00.000"), "AAA");
+            Message message2 = new Message(2, sdf.parse("01-03-2017 10:00:00.000"), "BBB");
+            Message message3 = new Message(3, sdf.parse("01-11-2017 10:00:00.000"), "CCC");
+            Message message4 = new Message(4, sdf.parse("01-12-2017 10:00:00.000"), "DDD");
+            Message message5 = new Message(5, sdf.parse("01-04-2018 10:00:00.000"), "EEE");
 
             kSession.insert(message1);
             kSession.insert(message2);
