@@ -1,0 +1,13 @@
+package com.sample
+ 
+import com.sample.Message;
+
+global java.util.Date lastYear;
+global java.util.Date thisYear;
+
+rule "more than 5 messages in the last year (Date literal)"
+    when
+        $num : Number( this > 5 ) from accumulate( $m : Message( messageDate >= "01-Jan-2017", messageDate < "01-Jan-2018" ), count( $m ) )
+    then
+        System.out.println( "more than 5 messages in the last year (Date literal): $num = " + $num );
+end
