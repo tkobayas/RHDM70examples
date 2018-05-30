@@ -1,0 +1,11 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+ 
+rule "Hello World 3"
+    when
+        m : Message( status == Message.HELLO, myMessage : message )
+    then
+        System.out.println( "Hello World 3" );
+end
+
