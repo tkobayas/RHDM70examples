@@ -1,0 +1,10 @@
+package com.sample;
+
+import com.sample.Message;
+
+rule "R0"
+	when
+		$m : Message( status == 0  ||  status == 1  ||  status == 2  )
+	then
+		System.out.println($m.getMessage());
+end

@@ -14,7 +14,9 @@ public class DroolsTest {
             // load up the knowledge base
             KieServices ks = KieServices.Factory.get();
             KieContainer kContainer = ks.getKieClasspathContainer();
-            KieSession kSession = kContainer.newKieSession("ksession-rules");
+            KieSession kSession = kContainer.newKieSession("or-rules");
+//            KieSession kSession = kContainer.newKieSession("split-rules");
+
             ReteDumper.dumpRete(kSession);
 
             // go !
@@ -27,5 +29,4 @@ public class DroolsTest {
             t.printStackTrace();
         }
     }
-
 }
