@@ -1,0 +1,10 @@
+package com.sample;
+
+import com.sample.Message;
+
+rule "HelloWorld_11"
+	when
+		Message( status == 0 ) or Message( status == 1 ) or Message( status == 2 ) or Message( status == 3 )
+	then
+		System.out.println("hit!");
+end
