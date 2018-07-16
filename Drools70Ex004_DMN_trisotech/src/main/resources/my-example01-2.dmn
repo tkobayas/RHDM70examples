@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dmn11:definitions xmlns="http://www.trisotech.com/dmn/definitions/_982cbb06-9460-416c-a72b-64ec442d0818" xmlns:feel="http://www.omg.org/spec/FEEL/20140401" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:trisofeed="http://trisotech.com/feed" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="DMN Modeler" exporterVersion="6.1.1.1" id="_982cbb06-9460-416c-a72b-64ec442d0818" name="my-example01" namespace="http://www.trisotech.com/dmn/definitions/_982cbb06-9460-416c-a72b-64ec442d0818" triso:logoChoice="Default" xmlns:dmn11="http://www.omg.org/spec/DMN/20151101/dmn.xsd">
+  <dmn11:extensionElements/>
+  <dmn11:itemDefinition label="name" name="name">
+    <dmn11:typeRef>feel:string</dmn11:typeRef>
+  </dmn11:itemDefinition>
+  <dmn11:itemDefinition label="person" name="person">
+    <dmn11:itemComponent id="_a8d18a83-40bb-4c82-a6c2-5d0a8161ff73" name="name">
+      <dmn11:typeRef>feel:string</dmn11:typeRef>
+    </dmn11:itemComponent>
+    <dmn11:itemComponent id="_56749822-1811-4320-ab4b-a789a9b262e1" name="age">
+      <dmn11:typeRef>feel:number</dmn11:typeRef>
+    </dmn11:itemComponent>
+    <dmn11:itemComponent id="_50a9accc-dc40-4208-814b-1f729bbdd5eb" name="address">
+      <dmn11:itemComponent id="_f3513ebd-77ed-4646-96ab-b31baa71cdee" name="zipcode">
+        <dmn11:typeRef>feel:string</dmn11:typeRef>
+      </dmn11:itemComponent>
+      <dmn11:itemComponent id="_298c6320-2e3f-4d0f-824d-5e89f44092b3" name="street">
+        <dmn11:typeRef>feel:string</dmn11:typeRef>
+      </dmn11:itemComponent>
+    </dmn11:itemComponent>
+  </dmn11:itemDefinition>
+  <dmn11:inputData id="_1d711f63-f558-4d49-be81-71e01453545f" name="Person">
+    <dmn11:variable id="_79b38cf8-cb77-4362-9786-335b9b6f1ffb" name="Person" typeRef="person"/>
+  </dmn11:inputData>
+  <dmn11:decision id="_c8d9e03c-baa1-42f1-ada7-719515f5e542" name="check person">
+    <dmn11:variable id="_fc203352-25f0-4ba3-bbec-ef1c7de0580b" name="check person" typeRef="feel:string"/>
+    <dmn11:informationRequirement>
+      <dmn11:requiredInput href="#_1d711f63-f558-4d49-be81-71e01453545f"/>
+    </dmn11:informationRequirement>
+    <dmn11:decisionTable hitPolicy="UNIQUE" id="_ff36ee9a-f5f3-4885-b132-fd33adc21cdf" outputLabel="check person" typeRef="feel:string">
+      <dmn11:input id="_7574b646-d11b-45ae-9b90-88c5935d1c73">
+        <dmn11:inputExpression typeRef="feel:string">
+          <dmn11:text>Person.name</dmn11:text>
+        </dmn11:inputExpression>
+      </dmn11:input>
+      <dmn11:input id="_9b906c04-d1dc-4e35-8946-a11718fb991a">
+        <dmn11:inputExpression typeRef="feel:number">
+          <dmn11:text>Person.age</dmn11:text>
+        </dmn11:inputExpression>
+      </dmn11:input>
+      <dmn11:input id="_850b86e5-1775-469e-bded-b15c0aa8ae95">
+        <dmn11:inputExpression typeRef="feel:string">
+          <dmn11:text>Person.address.zipcode</dmn11:text>
+        </dmn11:inputExpression>
+      </dmn11:input>
+      <dmn11:input id="_0f6b37dd-5a83-4712-86d3-915ebf2b036e">
+        <dmn11:inputExpression typeRef="feel:string">
+          <dmn11:text>Person.address.street</dmn11:text>
+        </dmn11:inputExpression>
+      </dmn11:input>
+      <dmn11:output id="_1a42954b-71fc-4ace-8a20-d33e74aa6120"/>
+      <dmn11:rule id="_77490ce7-68dd-44ee-abb0-bac2abb79516">
+        <dmn11:inputEntry id="_79c4b8b0-051b-4ee3-a9fd-d3f7bb8646cb">
+          <dmn11:text>"John"</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:inputEntry id="_f153d652-bb61-43cf-a70a-72b876cba794">
+          <dmn11:text>30</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:inputEntry id="_2e745670-f635-4296-a163-07506ed8edaa">
+          <dmn11:text>111</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:inputEntry id="_2e8d105d-727e-42ff-a236-d78533a9259c">
+          <dmn11:text>"xxx"</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:outputEntry id="_180b2262-4420-440c-b08e-eb696c7a9801">
+          <dmn11:text>"good"</dmn11:text>
+        </dmn11:outputEntry>
+      </dmn11:rule>
+    </dmn11:decisionTable>
+  </dmn11:decision>
+</dmn11:definitions>

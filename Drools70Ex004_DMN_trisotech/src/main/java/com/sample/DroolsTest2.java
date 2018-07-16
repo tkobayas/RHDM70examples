@@ -13,7 +13,7 @@ import org.kie.dmn.core.impl.DMNRuntimeImpl;
 /**
  * This is a sample class to launch a rule.
  */
-public class DroolsTest {
+public class DroolsTest2 {
 
     public static final void main(String[] args) {
         try {
@@ -24,13 +24,16 @@ public class DroolsTest {
             DMNRuntime runtime = kieContainer.newKieSession().getKieRuntime(DMNRuntime.class);
             ((DMNRuntimeImpl) runtime).setOption(new RuntimeTypeCheckOption(true));
 
-            DMNModel dmnModel = runtime.getModel("http://www.trisotech.com/dmn/definitions/_982cbb06-9460-416c-a72b-64ec442d0818", "my-example01");
+            DMNModel dmnModel = runtime.getModel("http://www.trisotech.com/dmn/definitions/_982cbb06-9460-416c-a72b-64ec442d0818", "my-example01-2");
 
             System.out.println(dmnModel);
             {
- 
+                
+                Address address = new Address("111", "xxx");
+                Person person = new Person("John", 30, address);
+                
                 DMNContext context = DMNFactory.newContext();
-                context.set("Person", "John");
+                context.set("Person", person);
 
                 DMNResult dmnResult = runtime.evaluateAll(dmnModel, context);
 
