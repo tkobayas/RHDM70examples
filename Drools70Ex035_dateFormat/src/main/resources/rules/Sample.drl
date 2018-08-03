@@ -1,0 +1,12 @@
+package com.sample
+ 
+import com.sample.Person;
+ 
+rule "Hello"
+    when
+        //$p : Person( birthDay > "12-Jun-2018" )
+        //$p : Person( birthDay > "2018-01-12" )
+        $p : Person( birthDay > "2018-1月-12" )
+    then
+        System.out.println( "Hello, " + $p.getName());
+end
