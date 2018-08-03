@@ -26,7 +26,7 @@ public class DroolsTest {
 
             DMNModel dmnModel = runtime.getModel("http://www.trisotech.com/dmn/definitions/_982cbb06-9460-416c-a72b-64ec442d0818", "my-example01");
 
-            System.out.println(dmnModel);
+            System.out.println("dmnModel = " + dmnModel);
             {
  
                 DMNContext context = DMNFactory.newContext();

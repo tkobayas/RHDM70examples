@@ -26,10 +26,10 @@ public class DroolsTest2 {
 
             DMNModel dmnModel = runtime.getModel("http://www.trisotech.com/dmn/definitions/_982cbb06-9460-416c-a72b-64ec442d0818", "my-example01-2");
 
-            System.out.println(dmnModel);
+            System.out.println("dmnModel = " + dmnModel);
             {
                 
-                Address address = new Address("111", "xxx");
+                Address address = new Address("vvv", "xxx");
                 Person person = new Person("John", 30, address);
                 
                 DMNContext context = DMNFactory.newContext();
