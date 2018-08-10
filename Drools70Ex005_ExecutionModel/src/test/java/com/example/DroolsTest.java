@@ -20,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 import com.sample.Person;
 import org.junit.Test;
 import org.kie.api.KieServices;
+import org.kie.api.builder.ReleaseId;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
@@ -27,11 +28,12 @@ public class DroolsTest {
 
     @Test
     public void testKJar() throws Exception {
+        
         KieServices ks = KieServices.Factory.get();
-        KieContainer kContainer = ks.getKieClasspathContainer();
+        ReleaseId releaseId = ks.newReleaseId("org.kie", "Drools70Ex005_ExecutionModel", "1.0.0");
+        KieContainer kContainer = ks.newKieContainer(releaseId);
         KieSession kSession = kContainer.newKieSession();
 
-        // go !
         Person john = new Person("john", 20);
         kSession.insert(john);
         int fired = kSession.fireAllRules();

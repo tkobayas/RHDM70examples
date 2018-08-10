@@ -14,6 +14,7 @@ import org.kie.internal.conf.MultithreadEvaluationOption;
 import org.kie.internal.utils.KieHelper;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
@@ -32,15 +33,18 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 @BenchmarkMode(Mode.SingleShotTime)
 @State(Scope.Thread)
-@Warmup(iterations = 100)
-@Measurement(iterations = 500)
+@Warmup(iterations = 50)
+@Measurement(iterations = 50)
+@Fork(1)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class ParalellBenchmark1Basic {
     
-    @Param({"10", "100", "1000", "2000"})
+//    @Param({"10", "100", "1000", "2000"})
+    @Param({"100", "1000"})
     private int a_numOfRules;
     
-    @Param({"10", "100", "1000", "2000"})
+//    @Param({"10", "100", "1000", "2000"})
+    @Param({"100", "1000"})
     private int b_numOfFacts;
 
     @Param({"false", "true"})
