@@ -14,6 +14,8 @@ public class DroolsTest {
 
     public static final void main(String[] args) {
         try {
+            System.setProperty("drools.timerJobFactory", "thread_safe_trackable");
+
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();
