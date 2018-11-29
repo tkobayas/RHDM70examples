@@ -4,5 +4,7 @@
     equalsBehavior="identity">
     <ksession name="myStatelessKsession" type="stateless" default="true"
       clockType="realtime" />
+    <ksession name="myStatefulKsession" type="stateful" default="false"
+      clockType="realtime" />
   </kbase>
 </kmodule>
