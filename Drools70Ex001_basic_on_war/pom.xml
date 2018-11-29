@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sample</groupId>
+    <artifactId>Drools70Ex001_basic_on_war</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>Drools :: Sample Maven Project</name>
+    <description>A sample Drools Maven project</description>
+
+    <properties>
+        <drools.version>7.5.0.Final-redhat-4</drools.version>
+
+        <!-- Explicitly declaring the source encoding eliminates the following message: -->
+        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered
+            resources, i.e. build is platform dependent! -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- JBoss dependency versions -->
+        <!-- to deploy EAP 6 -->
+        <!-- <version.jboss.maven.plugin>7.4.Final</version.jboss.maven.plugin> -->
+        <!-- to deploy EAP 7/WildFly -->
+        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+
+        <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
+        <version.jboss.bom.eap>7.1.0.GA</version.jboss.bom.eap>
+
+        <!-- other plug-in versions -->
+        <version.surefire.plugin>2.10</version.surefire.plugin>
+        <version.war.plugin>2.1.1</version.war.plugin>
+
+        <!-- maven-compiler-plugin -->
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Define the version of the JBoss Java EE APIs we want to import.
+                Any dependencies from org.jboss.spec will have their version defined by this
+                BOM -->
+            <!-- JBoss distributes a complete set of Java EE APIs including
+                a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or
+                a collection) of artifacts. We use this here so that we always get the correct
+                versions of artifacts. Here we use the jboss-eap-javaee7-with-tools stack
+                (you can read this as the JBoss stack of the Java EE APIs, with some extras
+                tools for your project, such as Arquillian for testing)  -->
+            <dependency>
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-eap-javaee7-with-tools</artifactId>
+                <version>${version.jboss.bom.eap}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>rh-all</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+    </repositories>
+
+    <dependencies>
+
+        <!-- Import the Servlet API, we use provided scope as the API is included in JBoss EAP -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet</groupId>
+            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-core</artifactId>
+            <version>${drools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+            <version>${drools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+      <!-- Set the name of the WAR, used as the context root when the app
+         is deployed -->
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.war.plugin}</version>
+                <configuration>
+                    <!-- Java EE doesn't require web.xml, Maven needs to catch
+                        up! -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <!-- JBoss AS plugin to deploy war -->
+            <!-- <plugin> -->
+            <!--     <groupId>org.jboss.as.plugins</groupId> -->
+            <!--     <artifactId>jboss-as-maven-plugin</artifactId> -->
+            <!--     <version>${version.jboss.maven.plugin}</version> -->
+            <!-- </plugin> -->
+            <!-- WildFly plug-in to deploy the WAR -->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>${version.wildfly.maven.plugin}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
