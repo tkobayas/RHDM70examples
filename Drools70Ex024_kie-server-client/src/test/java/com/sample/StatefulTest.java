@@ -35,26 +35,23 @@ public class StatefulTest extends TestCase {
     @Test
     public void testProcess() {
         
+        // You will always use the same Stateful ksession with lookup="myStatefulKsession" which you configured in kmodule.xml
+        
         // set global
         setup(); // results = []
 
         // 1st run
-        runClient(); // results = [hit Hello rule]
+        runClient(new Person("John", 20)); // results = [hit Hello rule]
         
         // 2nd run
-        runClient(); // results = [hit Hello rule, hit Hello rule]
+        runClient(new Person("Paul", 18)); // results = [hit Hello rule, hit Hello rule]
+        
+        // don't forget dispose
+        dispose();
     }
 
     private void setup() {
-        KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(BASE_URL, USERNAME, PASSWORD);
-        //        config.setMarshallingFormat(FORMAT);
-        HashSet<Class<?>> classes = new HashSet<Class<?>>();
-        classes.add(Person.class);
-
-        config.addExtraClasses(classes);
-        KieServicesClient client = KieServicesFactory.newKieServicesClient(config);
-
-        RuleServicesClient ruleClient = client.getServicesClient(RuleServicesClient.class);
+        RuleServicesClient ruleClient = getRuleClient();
 
         List<Command<?>> commands = new ArrayList<Command<?>>();
         KieCommands commandsFactory = KieServices.Factory.get().getCommands();
@@ -74,10 +71,9 @@ public class StatefulTest extends TestCase {
 
         System.out.println("results = " + results);
     }
-    
-    private void runClient() {
+
+    private RuleServicesClient getRuleClient() {
         KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(BASE_URL, USERNAME, PASSWORD);
-        //        config.setMarshallingFormat(FORMAT);
         HashSet<Class<?>> classes = new HashSet<Class<?>>();
         classes.add(Person.class);
 
@@ -85,13 +81,16 @@ public class StatefulTest extends TestCase {
         KieServicesClient client = KieServicesFactory.newKieServicesClient(config);
 
         RuleServicesClient ruleClient = client.getServicesClient(RuleServicesClient.class);
+        return ruleClient;
+    }
+    
+    private void runClient(Person person) {
+        RuleServicesClient ruleClient = getRuleClient();
 
         List<Command<?>> commands = new ArrayList<Command<?>>();
         KieCommands commandsFactory = KieServices.Factory.get().getCommands();
-
-        Person john = new Person("John", 20);
         
-        commands.add(commandsFactory.newInsert(john, "fact-1"));
+        commands.add(commandsFactory.newInsert(person, "fact-" + person.getName()));
 
         commands.add(commandsFactory.newFireAllRules("fire-result"));
         commands.add(commandsFactory.newGetGlobal(GLOBAL_IDENTIFIER));
@@ -107,6 +106,24 @@ public class StatefulTest extends TestCase {
         List results = (List)response.getResult().getValue(GLOBAL_IDENTIFIER);
 
         System.out.println("results = " + results);
+    }
+    
+    private void dispose() {
+        RuleServicesClient ruleClient = getRuleClient();
+
+        List<Command<?>> commands = new ArrayList<Command<?>>();
+        KieCommands commandsFactory = KieServices.Factory.get().getCommands();
+        
+        commands.add(commandsFactory.newDispose());
+
+        BatchExecutionCommand batchExecution = commandsFactory.newBatchExecution(commands, KSESSION_NAME);
+
+        ServiceResponse<ExecutionResults> response = ruleClient.executeCommandsWithResults(CONTAINER_ID, batchExecution);
+
+        System.out.println("-----------------------------------");
+
+        System.out.println(response);
+
     }
 
 }

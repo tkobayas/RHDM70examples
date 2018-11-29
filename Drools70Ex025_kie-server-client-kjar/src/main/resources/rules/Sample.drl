@@ -1,6 +1,7 @@
 package com.sample
  
 import com.sample.Person;
+import java.util.ArrayList;
 
 global java.util.List results;
 
@@ -17,6 +18,13 @@ rule "Hello"
     then
         System.out.println( "Hello, " + $p.getName());
         results.add("hit Hello rule");
+end
+
+rule "Hello collect"
+    when
+        $persons : ArrayList() from collect( Person() )
+    then
+        System.out.println( "Now we have " + $persons.size() + " Persons");
 end
 
 rule "Hello String"
