@@ -34,6 +34,8 @@ public class KieServerClientTest extends TestCase {
 
     @Test
     public void testProcess() {
+        
+        // Stateless is recommended for kie-server
 
         KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(BASE_URL, USERNAME, PASSWORD);
         //        config.setMarshallingFormat(FORMAT);

@@ -13,7 +13,7 @@
 
 
   <properties>
-    <drools.version>7.5.0.Final-redhat-4</drools.version>
+    <drools.version>7.11.0.Final-redhat-00004</drools.version>
   </properties>
 
   <dependencies>
