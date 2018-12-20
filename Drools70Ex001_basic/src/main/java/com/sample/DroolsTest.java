@@ -12,9 +12,9 @@ public class DroolsTest {
     public static final void main(String[] args) {
         try {
             // load up the knowledge base
-	        KieServices ks = KieServices.Factory.get();
-    	    KieContainer kContainer = ks.getKieClasspathContainer();
-        	KieSession kSession = kContainer.newKieSession("ksession-rules");
+            KieServices ks = KieServices.Factory.get();
+            KieContainer kContainer = ks.getKieClasspathContainer();
+            KieSession kSession = kContainer.newKieSession("ksession-rules");
 
             // go !
             Message message = new Message();
@@ -22,6 +22,9 @@ public class DroolsTest {
             message.setStatus(Message.HELLO);
             kSession.insert(message);
             kSession.fireAllRules();
+
+            kSession.dispose();
+
         } catch (Throwable t) {
             t.printStackTrace();
         }

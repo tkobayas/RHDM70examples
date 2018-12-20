@@ -12,18 +12,20 @@ public class DroolsTest {
     public static final void main(String[] args) {
         try {
             // load up the knowledge base
-	        KieServices ks = KieServices.Factory.get();
-    	    KieContainer kContainer = ks.getKieClasspathContainer();
-        	KieSession kSession = kContainer.newKieSession();
+            KieServices ks = KieServices.Factory.get();
+            KieContainer kContainer = ks.getKieClasspathContainer();
+            KieSession kSession = kContainer.newKieSession();
 
             // go !
             Person john = new Person("john", 20);
             kSession.insert(john);
             kSession.fireAllRules();
+
+            kSession.dispose();
+
         } catch (Throwable t) {
             t.printStackTrace();
         }
     }
-
 
 }

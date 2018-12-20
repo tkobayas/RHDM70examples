@@ -19,6 +19,9 @@ public class DroolsTest {
             Person john = new Person("john", 20);
             kSession.insert(john);
             kSession.fireAllRules();
+
+            kSession.dispose();
+
         } catch (Throwable t) {
             t.printStackTrace();
         }
