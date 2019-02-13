@@ -8,7 +8,7 @@ global java.util.List results;
 rule "Dummy"
     when
     then
-        System.out.println( "Dummy");
+        System.out.println( "Dummy 4");
 end
 
 
