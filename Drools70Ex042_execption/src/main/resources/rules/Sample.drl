@@ -18,5 +18,5 @@ rule "GoodBye"
         //eval( (5/0) == 0)
     then
         System.out.println( myMessage );
-        throw new Exception("XXX");
+        throw new RuntimeException("XXX");
 end
