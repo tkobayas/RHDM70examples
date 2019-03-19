@@ -27,6 +27,8 @@ public class DeserializeTest {
         try (FileInputStream in = new FileInputStream("./ksession.out");
                 DroolsObjectInputStream dois = new DroolsObjectInputStream(in);) {
             
+//            dois.setKnowledgeBase((InternalKnowledgeBase)kBase);
+
             kSession = (KieSession) dois.readObject();
 
         } catch (IOException | ClassNotFoundException e) {

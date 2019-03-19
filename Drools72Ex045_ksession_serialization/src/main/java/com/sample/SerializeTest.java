@@ -35,6 +35,7 @@ public class SerializeTest {
             e.printStackTrace();
         }
 
+        System.out.println("=== finished");
 
     }
 
