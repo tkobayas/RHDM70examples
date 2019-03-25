@@ -3,7 +3,6 @@ package com.sample;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.drools.core.common.DroolsObjectOutputStream;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -15,7 +14,7 @@ public class SerializeTest {
 
     public static final void main(String[] args) {
         // load up the knowledge base
-        KieServices ks = KieServices.Factory.get();
+        KieServices ks = KieServices.get();
         KieContainer kContainer = ks.getKieClasspathContainer();
         KieSession kSession = kContainer.newKieSession();
 
@@ -26,10 +25,9 @@ public class SerializeTest {
         kSession.fireAllRules();
 
         // Serialize
-        try (FileOutputStream out = new FileOutputStream("./ksession.out");
-                DroolsObjectOutputStream doos = new DroolsObjectOutputStream(out)) {
+        try (FileOutputStream out = new FileOutputStream("./ksession.out")) {
 
-            doos.writeObject(kSession);
+            ks.getMarshallers().newMarshaller( kSession.getKieBase() ).marshall( out, kSession );
 
         } catch (IOException e) {
             e.printStackTrace();

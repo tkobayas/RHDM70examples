@@ -3,9 +3,6 @@ package com.sample;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.drools.core.common.DroolsObjectInputStream;
-import org.drools.core.common.InternalWorkingMemory;
-import org.drools.core.impl.InternalKnowledgeBase;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -24,12 +21,9 @@ public class DeserializeTest {
         KieSession kSession = null;
 
         // Deserialize
-        try (FileInputStream in = new FileInputStream("./ksession.out");
-                DroolsObjectInputStream dois = new DroolsObjectInputStream(in);) {
+        try (FileInputStream in = new FileInputStream("./ksession.out")) {
             
-//            dois.setKnowledgeBase((InternalKnowledgeBase)kBase);
-
-            kSession = (KieSession) dois.readObject();
+            kSession = ks.getMarshallers().newMarshaller( kBase ).unmarshall( in );
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
