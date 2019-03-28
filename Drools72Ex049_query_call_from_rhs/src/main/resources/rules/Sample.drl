@@ -1,0 +1,15 @@
+package com.sample
+ 
+import com.sample.Person;
+
+query "query1" 
+    person : Person( age > 30 )
+end
+
+
+rule "Hello World"
+    when
+    then
+        org.kie.api.runtime.rule.QueryResults results = kcontext.getKieRuntime().getQueryResults("query1");
+        System.out.println( "results.size() = " + results.size() );
+end
