@@ -1,0 +1,14 @@
+package com.sample;
+
+import com.sample.Person;
+import com.sample.Company;
+
+rule "R1"
+	when
+		$p : Person(age > 10)
+		$c : Company(name == $p.name)
+	then
+		System.out.println($p + ", " + $c);
+end
+
+
