@@ -33,3 +33,10 @@ rule "Hello String"
     then
         System.out.println( "Hello, " + $s);
 end
+
+rule "Hello Number"
+    when
+        $n : Number( )
+    then
+        System.out.println( "Hello Number, " + $n);
+end

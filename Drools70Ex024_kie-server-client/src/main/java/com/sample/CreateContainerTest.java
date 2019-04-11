@@ -23,8 +23,8 @@ public class CreateContainerTest {
 
         ReleaseId releaseId = new ReleaseId(GROUP_ID, ARTIFACT_ID, VERSION);
         KieContainerResource resource = new KieContainerResource(CONTAINER_ID, releaseId);
-//        KieScannerResource scanner = new KieScannerResource(KieScannerStatus.STARTED, 10000L);
-//        resource.setScanner(scanner);
+        KieScannerResource scanner = new KieScannerResource(KieScannerStatus.STARTED, 10000L);
+        resource.setScanner(scanner);
         ServiceResponse<KieContainerResource> response = client.createContainer(CONTAINER_ID, resource);
 
         System.out.println(response);
