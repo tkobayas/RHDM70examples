@@ -1,0 +1,11 @@
+package com.myspace.proj1;
+
+import com.sample.Person;
+
+
+rule "dtree1_0"
+	when 
+		Person($age : age == 20)
+then 
+    System.out.println("dtree1_0");
+end
