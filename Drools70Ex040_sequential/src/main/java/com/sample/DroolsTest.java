@@ -20,6 +20,8 @@ public class DroolsTest {
             // If you have update/modify in rules, the result may differ depending on rules ordering in a DRL file
             System.setProperty("drools.sequential", "true");
             
+            // NOTE: RETEOO has been dropped since Drools 7. So only PHREAK
+
             // load up the knowledge base
             KieServices ks = KieServices.Factory.get();
             KieContainer kContainer = ks.getKieClasspathContainer();
