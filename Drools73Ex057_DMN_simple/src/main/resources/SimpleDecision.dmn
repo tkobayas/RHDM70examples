@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://github.com/kiegroup/drools/kie-dmn/_B744A985-7C00-4D5B-91E0-59EF9656B083" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_C780E64F-FEE1-4082-B61F-75DCB6ED28B9" name="SimpleDecision" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://github.com/kiegroup/drools/kie-dmn/_B744A985-7C00-4D5B-91E0-59EF9656B083">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_E82E0A89-8630-4708-A1B2-5E4019204A63" name="Person" isCollection="false">
+    <dmn:itemComponent id="_39D35BBB-C9C8-40AD-BA36-030E2B0F4CE6" name="name" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_C88B1F80-CD3B-4F8F-872A-45B4059F9945" name="age" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_A69244AF-F30E-4F3F-86C2-FE98BAA53A26" name="Person">
+    <dmn:variable id="_37FC71D9-E79B-4C1B-8411-614188D5CC52" name="Person"/>
+  </dmn:inputData>
+  <dmn:decision id="_0E8D4D16-5AE8-4458-9E06-CDF1F30A1709" name="RESULT">
+    <dmn:variable id="_4A0BB630-10C3-421D-8A01-7B271989D820" name="RESULT" typeRef="string"/>
+    <dmn:informationRequirement id="_650227A6-5DF2-40D1-841A-9FD2E61C6BA6">
+      <dmn:requiredInput href="#_A69244AF-F30E-4F3F-86C2-FE98BAA53A26"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_FAEB57BF-0758-4A7C-B1A1-CECC331E8B3D" hitPolicy="FIRST" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_402B27BB-E362-4977-A825-0FC778B23FE6">
+        <dmn:inputExpression id="_9B1D16EE-6F9B-4B1A-B894-2D12D53D8D0B" typeRef="string">
+          <dmn:text>Person.name</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_20BD580C-BA4D-47D2-9BCE-5B79F2F412AC">
+        <dmn:inputExpression id="_ABAA1F55-05F8-41EF-BDF3-DB7EDD06CB3C" typeRef="number">
+          <dmn:text>Person.age</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_26F5595D-912C-4716-BF84-EF805B0E84D2" typeRef="string"/>
+      <dmn:rule id="_D56EAC4E-9A44-4827-8F26-EE9E83C41DB8">
+        <dmn:inputEntry id="_75BE5F2B-2A0F-4892-9179-29F96A93824F">
+          <dmn:text>"John"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EFBB522E-C81A-42E4-B47C-68A2BCD2480E">
+          <dmn:text>&lt;20</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0939F6D2-F6C6-4EA0-BA84-553C42043C7F">
+          <dmn:text>"Good"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_F2E36001-3DBA-4B7C-9A4C-21411F273089">
+        <dmn:inputEntry id="_754C69AB-B894-4463-9EE2-24DD7C3953F2">
+          <dmn:text>"John"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1E124277-75A0-425F-ADCC-2A818EE18E0E">
+          <dmn:text>&gt;=20</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_201AFB37-121D-4154-B139-2824C83622C0">
+          <dmn:text>"Bad"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_5B8D2955-F0BC-483B-BE3F-C0B1D896EE23">
+        <dmn:inputEntry id="_C938FA35-B305-4E4F-93D1-08F7BEBFFE80">
+          <dmn:text>"Paul"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F48E2F4B-0FFC-44C1-87B0-B388089D581B">
+          <dmn:text>&lt;18</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E08ADD5D-CF32-4925-A294-7DD06A62A527">
+          <dmn:text>"Good"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_CC6C6939-3C59-468B-B057-F0E48B56E1E7">
+        <dmn:inputEntry id="_C11281B0-0F5C-4DCA-953A-7CF0A782E3F6">
+          <dmn:text>"Paul"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_10433EC4-3238-442C-A943-A808E4B519F7">
+          <dmn:text>&gt;=18</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_680C5216-A5C9-4F7C-9456-983095D448F8">
+          <dmn:text>"Bad"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_2E674E0D-E029-4B4B-84D9-8047FA470C97">
+        <dmn:inputEntry id="_E0B954B7-95AB-44A3-895A-2ABAB7B22B1B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8A506D25-2FBC-4A28-9B45-2A44B78C2D4F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_273AE86B-0100-4F1F-84D9-1EED50814B47">
+          <dmn:text>"N/A"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_FAEB57BF-0758-4A7C-B1A1-CECC331E8B3D">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_A69244AF-F30E-4F3F-86C2-FE98BAA53A26" dmnElementRef="_A69244AF-F30E-4F3F-86C2-FE98BAA53A26" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="153" y="83" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_0E8D4D16-5AE8-4458-9E06-CDF1F30A1709" dmnElementRef="_0E8D4D16-5AE8-4458-9E06-CDF1F30A1709" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="340" y="83" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_650227A6-5DF2-40D1-841A-9FD2E61C6BA6" dmnElementRef="_650227A6-5DF2-40D1-841A-9FD2E61C6BA6">
+        <di:waypoint x="253" y="108"/>
+        <di:waypoint x="340" y="108"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
