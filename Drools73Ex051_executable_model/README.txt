@@ -1,9 +1,12 @@
 To generate execution model, run with property generateModel=yes.
 
-$ mvn clean install -DgenerateModel=yes
+$ mvn clean install -DskipTests -DgenerateModel=yes
 
 You can confirm it by looking inside the created kjar.
 
+Then,
+
+$ mvn test
 
 ~~~
 YES:     Generates the executable model corresponding to the DRL files in the original project and excludes the DRL files from the generated KJAR.
