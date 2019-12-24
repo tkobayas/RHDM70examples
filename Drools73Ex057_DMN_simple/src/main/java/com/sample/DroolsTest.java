@@ -46,10 +46,11 @@ public class DroolsTest {
 
                 DMNContext result = dmnResult.getContext();
 
+                System.out.println("result context = " + result);
+
                 System.out.println("RESULT = " + result.get("RESULT"));
 
             }
-
 
         } catch (Throwable t) {
             t.printStackTrace();
