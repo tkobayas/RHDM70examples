@@ -14,6 +14,7 @@ import org.kie.api.command.BatchExecutionCommand;
 import org.kie.api.command.Command;
 import org.kie.api.command.KieCommands;
 import org.kie.api.runtime.ExecutionResults;
+import org.kie.server.api.marshalling.MarshallingFormat;
 import org.kie.server.api.model.ServiceResponse;
 import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
@@ -29,7 +30,7 @@ public class StatelessTest extends TestCase {
     
     private static final String GLOBAL_IDENTIFIER = "results";
 
-    //    private static final MarshallingFormat FORMAT = MarshallingFormat.JSON;
+        private static final MarshallingFormat FORMAT = MarshallingFormat.JSON;
     //    private static final MarshallingFormat FORMAT = MarshallingFormat.JAXB;
 
     @Test
@@ -38,7 +39,7 @@ public class StatelessTest extends TestCase {
         // Stateless is recommended for kie-server
 
         KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(BASE_URL, USERNAME, PASSWORD);
-        //        config.setMarshallingFormat(FORMAT);
+                config.setMarshallingFormat(FORMAT);
         HashSet<Class<?>> classes = new HashSet<Class<?>>();
         classes.add(Person.class);
         classes.add(LoanApplication.class);
