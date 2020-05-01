@@ -69,6 +69,15 @@ public class DMNTest extends TestCase {
                                       "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF",
                                       "Traffic Violation",
                                       dmnContext);
+        
+//        ServiceResponse<DMNResult> serverResp =
+//                dmnClient.evaluateDecisionByName(CONTAINER_ID,
+//                                      "https://github.com/kiegroup/drools/kie-dmn/_A4BCA8B8-CF08-433F-93B2-A2598F19ECFF",
+//                                      "Traffic Violation",
+//                                      "Fine",
+//                                      dmnContext);
+        
+        
 
         DMNResult dmnResult = serverResp.getResult();
         for (DMNDecisionResult dr : dmnResult.getDecisionResults()) {
