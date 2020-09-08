@@ -8,12 +8,15 @@ import java.util.HashSet;
 import java.util.List;
 
 import junit.framework.TestCase;
+import org.drools.core.runtime.rule.impl.FlatQueryResults;
 import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.command.BatchExecutionCommand;
 import org.kie.api.command.Command;
 import org.kie.api.command.KieCommands;
 import org.kie.api.runtime.ExecutionResults;
+import org.kie.api.runtime.rule.FactHandle;
+import org.kie.api.runtime.rule.QueryResultsRow;
 import org.kie.server.api.marshalling.MarshallingFormat;
 import org.kie.server.api.model.ServiceResponse;
 import org.kie.server.client.KieServicesClient;
@@ -21,7 +24,7 @@ import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
 import org.kie.server.client.RuleServicesClient;
 
-public class SimpleTest extends TestCase {
+public class QueryAndGetTest extends TestCase {
 
     private static final String USERNAME = "kieserver";
     private static final String PASSWORD = "kieserver1!";
@@ -34,15 +37,6 @@ public class SimpleTest extends TestCase {
 
     @Test
     public void testProcess() {
-        
-        // 1st run
-        runClient(new Person("John", 20)); // results = [hit Hello rule]
-        
-        // don't forget dispose
-        //dispose();
-    }
-
-    private RuleServicesClient getRuleClient() {
         KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(BASE_URL, USERNAME, PASSWORD);
         HashSet<Class<?>> classes = new HashSet<Class<?>>();
         classes.add(Person.class);
@@ -54,38 +48,18 @@ public class SimpleTest extends TestCase {
         KieServicesClient client = KieServicesFactory.newKieServicesClient(config);
 
         RuleServicesClient ruleClient = client.getServicesClient(RuleServicesClient.class);
-        return ruleClient;
-    }
-    
-    private void runClient(Person person) {
         
-//        person.setNewProp("XXX");
+        Person person = new Person("JohnXXYZ", 20);
         
-        RuleServicesClient ruleClient = getRuleClient();
-
         List<Command<?>> commands = new ArrayList<Command<?>>();
         KieCommands commandsFactory = KieServices.Factory.get().getCommands();
-        
+
         commands.add(commandsFactory.newInsert(person, "fact-" + person.getName()));
 
         commands.add(commandsFactory.newFireAllRules("fire-result"));
-
-        BatchExecutionCommand batchExecution = commandsFactory.newBatchExecution(commands);
-
-        ServiceResponse<ExecutionResults> response = ruleClient.executeCommandsWithResults(CONTAINER_ID, batchExecution);
-
-        System.out.println("-----------------------------------");
-
-        System.out.println(response);
-    }
-    
-    private void dispose() {
-        RuleServicesClient ruleClient = getRuleClient();
-
-        List<Command<?>> commands = new ArrayList<Command<?>>();
-        KieCommands commandsFactory = KieServices.Factory.get().getCommands();
         
-        commands.add(commandsFactory.newDispose());
+        commands.add(commandsFactory.newQuery("query-result1", "query1"));
+//        commands.add(commandsFactory.newQuery(null, "query1"));
 
         BatchExecutionCommand batchExecution = commandsFactory.newBatchExecution(commands);
 
@@ -94,7 +68,37 @@ public class SimpleTest extends TestCase {
         System.out.println("-----------------------------------");
 
         System.out.println(response);
+        
+        Object value = response.getResult().getValue("query-result1");
+        
+        System.out.println(value);
+        System.out.println(value.getClass());
 
+        FlatQueryResults flatQueryResults = (FlatQueryResults)value;
+        
+        FactHandle lastFactHandle = null;
+        
+        for (QueryResultsRow queryResultsRow : flatQueryResults) {
+            System.out.println("------");
+            Object object = queryResultsRow.get("$p");
+            System.out.println("object : " + object);
+            FactHandle factHandle = queryResultsRow.getFactHandle("$p");
+            System.out.println("factHandle : " + factHandle);
+            
+            lastFactHandle = factHandle;
+        }
+        
+        //--------------------
+        
+        commands.clear();
+        
+        commands.add(commandsFactory.newGetObject(lastFactHandle, "get-obj"));
+
+        batchExecution = commandsFactory.newBatchExecution(commands);
+
+        ServiceResponse<ExecutionResults> response2 = ruleClient.executeCommandsWithResults(CONTAINER_ID, batchExecution);
+        
+        System.out.println(response2);
+        
     }
-
 }

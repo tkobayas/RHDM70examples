@@ -75,5 +75,12 @@ public class Person {
         this.adult = adult;
     }
 
+
+    @Override
+    public String toString() {
+        return "Person [name=" + name + ", age=" + age + ", birthDay=" + birthDay + ", adult=" + adult + "]";
+    }
+
+    
     
 }
