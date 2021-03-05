@@ -1,0 +1,20 @@
+package com.sample;
+
+import com.sample.FactA;
+import com.sample.FactB;
+
+rule "rule1"
+	enabled true
+	dialect "mvel"
+	agenda-group "mygroup"
+	when
+		temp : FactA( value == "ABC" )
+	then
+		FactB b = new FactB();
+		b.setValue( "XYZ" );
+		System.out.println("rule1 fired!");
+		insert( b );
+end
+query "query1"
+   $b : FactB()
+end
