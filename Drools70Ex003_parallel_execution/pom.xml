@@ -10,7 +10,7 @@
   
   <properties>
     <version.jmh>1.19</version.jmh>
-    <version.drools>7.5.0.Final-redhat-4</version.drools>
+    <version.drools>7.60.0.Final</version.drools>
   </properties>
 
   <dependencies>
