@@ -9,7 +9,7 @@
   <version>1.0.0-SNAPSHOT</version>
 
   <properties>
-    <drools.version>7.5.0.Final-redhat-4</drools.version>
+    <drools.version>7.59.0.Final-redhat-00006</drools.version>
   </properties>
 
   <repositories>
